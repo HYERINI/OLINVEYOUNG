@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>장바구니</title>
+    <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="stylesheet" href="../static/css/cart.css">
+</head>
+<body>
+  <div class="cart_wrap">
+    <div class="main_nav_bar">
+      <div class="main_nav_member">
+        <p onclick="location.href='./signup.html'">회원가입</p>
+        <p onclick="location.href='./login.html'">로그인</p>
+        <p onclick="location.href='./cart.html'">장바구니</p>
+      </div>
+      <div class="main_nav_logo">
+        <img onclick="location.href='./index.html'" id="logo" src="../static/img/logo.png" />
+      </div>
+    </div>
+    <div class="main_item_title">장바구니</div>
+    <div class="cart_box_wrap">
+      <div id="cartBox">
+        <img src="../static/img/hera.jpeg" />
+        <div>
+          <h3>헤라</h3>
+          <div>
+            <p id="cart_price">34,000원</p>
+            <p id="cart_num">수량 : 1</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="order_bt_wrap">
+      <button type="button">구매하기</button>
+      <button type="button" onclick="location.href='order.html'">구매 내역 확인하기</button>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <script src="../static/js/cart.js"></script>
+</body>
+</html>

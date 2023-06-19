@@ -1,0 +1,112 @@
+@font-face {
+    font-family: 'S-CoreDream-3Light';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*body{*/
+/*    font-family: 'EF_jejudoldam';*/
+/*}*/
+
+body, h3, p{
+    font-family: 'S-CoreDream-3Light';
+    margin: 0;
+    padding: 0;
+}
+
+.main_nav_member{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.main_nav_member{
+    margin-top: 10px;
+}
+
+.main_nav_member > p{
+    margin: 5px 5px 0px 5px;
+    cursor: pointer;
+    font-weight: bolder;
+    border-right: 1px solid black;
+    padding-right: 10px;
+}
+
+.main_nav_member > p:last-child{
+    border: 0;
+}
+
+.main_nav_logo{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.main_nav_logo > img{
+    width: 170px;
+}
+
+.main_nav_bar > img{
+    width: 200px;
+}
+
+.main_item_title{
+    font-weight: 1000;
+    width: 100%;
+    background-color: #d1d1f5;
+    text-align: center;
+    margin-top: 15px;
+    font-size: 25px;
+    color: #ffffff;
+    padding: 10px 0;
+}
+
+.main_item_wrap {
+    width: 80%;
+    margin: 30px auto;
+    display: flex;
+    justify-content: center; /* 가운데 정렬로 유지 */
+    flex-wrap: wrap;
+}
+
+@media(max-width: 900px){
+    .main_item_wrap{
+        width: 90%;
+    }
+}
+.main_item_box {
+    border: 1px solid silver;
+    margin: 10px;
+    text-align: center;
+    width: 200px;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.main_item_box > img{
+    width: 100%;
+}
+
+.main_item_price{
+    padding: 5px 10px;
+    font-family: 'S-CoreDream-3Light';
+}
+
+#name{
+    font-weight: 800;
+}
+
+.footer{
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 10px;
+}
+
+.footer > p{
+    line-height: 25px;
+    letter-spacing: 1px;
+}
