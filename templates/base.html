@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head><!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        {% block static %}
+        {% endblock %}
+    </head>
+<body>
+<div class="member_wrap">
+    <div class="main_nav_bar">
+        <div class="main_nav_member">
+            {% if user.is_authenticated %}
+                <p onclick="location.href='{% url 'product:cart_list' %}'">장바구니</p>
+                <p onclick="location.href='{% url 'account:logout' %}'">로그아웃</p>
+            {% else %}
+                <p onclick="location.href='{% url 'account:signup' %}'">회원가입</p>
+                <p onclick="location.href='{% url 'account:login' %}'">로그인</p>
+            {% endif %}
+        </div>
+        <div class="main_nav_logo">
+            <img onclick="location.href='{% url 'main:redirect' %}'" id="logo" src="{% static 'img/logo.png' %}" />
+        </div>
+    </div>
+    {% block content %}
+    {% endblock %}
+</div>
+</body>

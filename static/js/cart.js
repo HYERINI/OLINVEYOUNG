@@ -13,37 +13,22 @@ function getCookie(name) {
   return cookieValue;
 }
 
-function count(type){
-    const resultElement = document.getElementById('num');
-    let number = resultElement.innerText;
-    if(type === 'plus') {
-        number = parseInt(number) + 1;
-    } else if(type === 'minus')  {
-        if(number != 0){
-            number = parseInt(number) - 1;
-        }
-    }
-    resultElement.innerText = number;
-}
-
-function pushCart(id){
-    var number = document.getElementById('num');
+function cartDelete(id){
     var csrftoken = getCookie('csrftoken');
     $.ajax({
-        url: '/product/cart/create/',
+        url: '/product/cart/delete/',
         method: 'POST',
         headers: {
           'X-CSRFToken': csrftoken
         },
         data:JSON.stringify({
             "id" : id,
-            "quantity" : number.innerText
         }),
         success: function(){
             alert('성공');
-            window.location = '/';
+            window.location = "/product/cart/list/";
         }, error: function(){
-            alert('장바구니 넣기 실패');
+            alert('주문 실패');
         }
     })
 }

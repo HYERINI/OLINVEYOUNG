@@ -1,38 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+{% extends 'base.html' %}
+{% load static %}
+
+{% block static %}
     <title>장바구니</title>
-    <link rel="stylesheet" href="../static/css/index.css">
-    <link rel="stylesheet" href="../static/css/cart.css">
-</head>
-<body>
-<div class="cart_wrap">
-    <div class="main_nav_bar">
-        <div class="main_nav_member">
-            <p onclick="location.href='./signup.html'">회원가입</p>
-            <p onclick="location.href='./login.html'">로그인</p>
-            <p onclick="location.href='./cart.html'">장바구니</p>
-        </div>
-        <div class="main_nav_logo">
-            <img onclick="location.href='./index.html'" id="logo" src="../static/img/logo.png" />
-        </div>
-    </div>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/cart.css' %}">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="{% static 'js/cartItem.js' %}"></script>
+{% endblock %}
+
+{% block content %}
     <div class="main_item_title">구매내역</div>
-    <div class="cart_box_wrap">
-        <div id="cartBox">
-            <img src="../static/img/hera.jpeg" />
-            <div>
-                <h3>헤라</h3>
+    {% for order in order_list %}
+        <div class="cart_box_wrap">
+            <div id="cartBox">
+                <img src="{{order.product.image.url}}" />
                 <div>
-                    <p id="cart_price">34,000원</p>
-                    <p id="cart_num">수량 : 1</p>
+                    <h3>{{order.product.name}}</h3>
+                    <div>
+                        <p id="cart_price">{{order.product.price}}원</p>
+                        <p id="cart_num">수량 : {{order.quantity}}</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-<script src="../static/js/cartItem.js"></script>
-</body>
-</html>
+    {% endfor %}
+{% endblock %}
+
+

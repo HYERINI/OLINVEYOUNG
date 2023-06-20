@@ -1,41 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+{% extends 'base.html' %}
+{% load static %}
+
+{% block static %}
     <title>회원가입</title>
-    <link rel="stylesheet" href="../static/css/index.css">
-  <link rel="stylesheet" href="../static/css/signup.css">
-</head>
-<body>
-  <div class="member_wrap">
-    <div class="main_nav_bar">
-      <div class="main_nav_member">
-        <p onclick="location.href='./signup.html'">회원가입</p>
-        <p onclick="location.href='./login.html'">로그인</p>
-        <p onclick="location.href='./cart.html'">장바구니</p>
-      </div>
-      <div class="main_nav_logo">
-        <img onclick="location.href='./index.html'" id="logo" src="../static/img/logo.png" />
-      </div>
-    </div>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type = "text/javascript" src = "{% static 'js/signup.js' %}"></script>
+{% endblock %}
+
+{% block content %}
     <div class="main_item_title">회원가입</div>
-    <div class="signup_body_wrap">
-      <div class="signup_box">
-        <div>
-          <p>아이디</p>
-          <input type="text" placeholder="아이디를 입력하세요"/>
+    <form action = "{% url 'account:signup' %}" method = "post">
+      {% csrf_token %}
+      <div class="signup_body_wrap">
+        <div class="signup_box">
+          <div>
+            <p>아이디</p>
+            <input type="text" name = "username" placeholder="아이디를 입력하세요"/>
+          </div>
+          <div>
+            <p>비밀번호</p>
+            <input type="password" name = "password" placeholder="비밀번호를 입력하세요" />
+          </div>
+          <div>
+            <p>이름</p>
+            <input type="text" name = "name" placeholder="이름을 입력하세요"/>
+          </div>
+          <button class="signupBt" type="button">회원가입</button>
+          <input type = "submit" id = "signUpSb" style = "display:none;">
         </div>
-        <div>
-          <p>비밀번호</p>
-          <input type="password" placeholder="비밀번호를 입력하세요" />
-        </div>
-        <div>
-          <p>이름</p>
-          <input type="text" placeholder="이름을 입력하세요"/>
-        </div>
-        <button class="signupBt" type="button">회원가입</button>
       </div>
-    </div>
-  </div>
-</body>
-</html>
+    </form>
+{% endblock %}
