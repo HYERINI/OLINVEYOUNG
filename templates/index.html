@@ -1,103 +1,29 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../static/css/index.css">
+{% extends 'base.html' %}
+{% load static %}
+
+{% block static %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="{% static 'js/index.js' %}"></script>
     <title>올린보영</title>
-</head>
-<body>
-    <div class="main_wrap">
-        <div class="main_nav_bar">
-            <div class="main_nav_member">
-                <p onclick="location.href='./signup.html'">회원가입</p>
-                <p onclick="location.href='./login.html'">로그인</p>
-                <p onclick="location.href='./cart.html'">장바구니</p>
-            </div>
-            <div class="main_nav_logo">
-                <img onclick="location.href='./index.html'" id="logo" src="../static/img/logo.png" />
-            </div>
-        </div>
+{% endblock %}
+
+{% block content %}
         <div class="main_item_title">전체 상품 조회</div>
         <div class="main_item_wrap">
-            <div class="main_item_box" id="esteelauder" onclick="showDetail(0);">
-                <img src="../static/img/esteelauder.jpeg" />
-                <div class="main_item_price">
-                    <p id="name">에스티로더</p>
-                    <p id="price">59,400원</p>
+            {% for product in product_list %}
+                <div class="main_item_box" id="esteelauder" onclick="location.href = '{% url 'product:product_detail' product.id %}'">
+                    <img src="{{product.image.url}}" />
+                    <div class="main_item_price">
+                        <p id="name">{{product.name}}</p>
+                        <p id="price">{{product.price}}원</p>
+                    </div>
                 </div>
-            </div>
-            <div class="main_item_box" id="clinique" onclick="showDetail(1);">
-                <img src="../static/img/clinique.jpeg" />
-                <div class="main_item_price">
-                    <p id="name">크리니크</p>
-                    <p id="price">26,400원</p>
-                </div>
-            </div>
-            <div class="main_item_box" id="formant" onclick="showDetail(2);">
-                <img src="../static/img/formant.jpeg" />
-                <div class="main_item_price">
-                    <p id="name">포맨트</p>
-                    <p id="price">12,400원</p>
-                </div>
-            </div>
-            <div class="main_item_box" id="hera" onclick="showDetail(3);">
-                <img src="../static/img/hera.jpeg" />
-                <div class="main_item_price">
-                    <p id="name">헤라</p>
-                    <p id="price">52,900원</p>
-                </div>
-            </div>
-            <div class="main_item_box" id="mac" onclick="showDetail(4);">
-                <img src="../static/img/mac.jpeg" />
-                <div class="main_item_price">
-                    <p id="name">맥</p>
-                    <p id="price">26,400원</p>
-                </div>
-            </div>
-            <div class="main_item_box" id="john" onclick="showDetail(5);">
-                <img src="../static/img/john.jpeg" />
-                <div class="main_item_price">
-                    <p id="name">존바바토스</p>
-                    <p id="price">87,000원</p>
-                </div>
-            </div>
-            <div class="main_item_box" id="roman" onclick="showDetail(6);">
-                <img src="../static/img/roman.jpeg" />
-                <div class="main_item_price">
-                    <p id="name">롬앤</p>
-                    <p id="price">28,000원</p>
-                </div>
-            </div>
-            <div class="main_item_box" id="dalba" onclick="showDetail(7);">
-                <img src="../static/img/dalba.jpeg" />
-                <div class="main_item_price">
-                    <p id="name">달바</p>
-                    <p id="price">45,000원</p>
-                </div>
-            </div>
-            <div class="main_item_box" id="bobbybrown" onclick="showDetail(8);">
-                <img src="../static/img/bobbybrown.jpeg" />
-                <div class="main_item_price">
-                    <p id="name">바비브라운</p>
-                    <p id="price">87,000원</p>
-                </div>
-            </div>
-            <div class="main_item_box" id="lab" onclick="showDetail(9);">
-                <img src="../static/img/lab.jpeg" />
-                <div class="main_item_price">
-                    <p id="name">랩시리즈</p>
-                    <p id="price">70,000원</p>
-                </div>
-            </div>
+            {% endfor %}
         </div>
         <div class="footer">
             <p>Copyright ⓒ 2023 <br/>202010904 이혜린</p>
         </div>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-    <script src="../static/js/index.js"></script>
-</body>
-</html>
+{% endblock%}
+
+
