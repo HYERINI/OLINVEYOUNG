@@ -10,6 +10,7 @@ var cartItem=[
     {'id':'bobbybrown', 'name':'바비브라운', 'price': '87,000'},
     {'id':'lab', 'name':'랩시리즈', 'price': '70,000'},
 ]
+
 function getId(){
     var id = localStorage.getItem('item');
     var name = document.getElementById('cos_detail_title');
@@ -37,10 +38,23 @@ function count(type){
 
 function pushCart(){
     var id = localStorage.getItem('item');
-    const resultElement = document.getElementById('num');
-    var cartNumber = resultElement.innerHTML;
-    var cartItem = [id, cartNumber];
-    alert(cartItem);
+    var number = document.getElementById('num');
+    $.ajax({
+        url: '',
+        method: 'POST',
+        data:{
+            name: cartItem[id]['name'],
+            price: cartItem[id]['price'],
+            imgSrc : cartItem[id]['id'] + '.jpeg',
+            number: number.innerText
+        },
+        success: function(){
+            alert('성공');
+            window.location = '../templates/index.html';
+        }, error: function(){
+            alert('장바구니 넣기 실패');
+        }
+    })
 }
 
 window.onload = getId();
