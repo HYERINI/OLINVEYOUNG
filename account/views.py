@@ -15,7 +15,7 @@ def signup(request):
                 last_name=request.POST['name'][1:],
             )
             auth.login(request, user)
-            return redirect('product:post_list')
+            return redirect('product:product_list')
 
     else:
         return render(request, 'signup.html')
